@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2 as cv
 
+import os
+
 from utils import *
 
 def select_parallel_lines_and_axis(img: np.ndarray):
@@ -19,7 +21,25 @@ def select_parallel_lines_and_axis(img: np.ndarray):
 
 	return origin, axes, lines
 
-def draw_axis(img: np.ndarray, origin, axes) -> np.ndarray:
+BASE_ANNOTATIONS_DIR = "criminisi_data"
+
+def save_axes(name, origin, axes, lines):
+	np.savez(os.path.join(BASE_ANNOTATIONS_DIR, name + "-annot.npz"), origin=origin, axes=axes, lines=lines)
+
+def load_axes(name) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+	annots = np.load(os.path.join(BASE_ANNOTATIONS_DIR, name + "-annot.npz"))
+
+	return annots["origin"], annots["axes"], annots["lines"]
+
+def save_measurements(name, lines, lengths):
+	np.savez(os.path.join(BASE_ANNOTATIONS_DIR, name + "-lines.npz"), lines=lines, lengths=lengths)
+
+def load_measurements(name) -> tuple[np.ndarray, np.ndarray]:
+	meas = np.load(os.path.join(BASE_ANNOTATIONS_DIR, name + "-lines.npz"))
+
+	return meas["lines"], np.array(meas["lengths"])
+
+def draw_axes(img: np.ndarray, origin, axes) -> np.ndarray:
 	axis_img = np.copy(img)
 
 	lines = np.zeros((3, 2, 2))
@@ -30,6 +50,7 @@ def draw_axis(img: np.ndarray, origin, axes) -> np.ndarray:
 		dir /= np.linalg.norm(dir)
 
 		lines[i, 1] = origin + dir * 300
+		lines[i, 1][lines[i, 1] < 0] = 0
 
 	axis_img = draw_lines(axis_img, lines)
 
