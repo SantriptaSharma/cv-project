@@ -1,3 +1,6 @@
 [submodule "UniDepth"]
 	path = UniDepth
 	url = https://github.com/lpiccinelli-eth/UniDepth.git
+[submodule "DepthPro"]
+	path = DepthPro
+	url = https://github.com/apple/ml-depth-pro.git

@@ -2,3 +2,9 @@ __pycache__
 
 criminisi_data_backup
 unidepth_out/points.npz
+unidepth_out/depths.npz
+depthpro_out/focals.npz
+depthpro_out/depths.npz
+
+
+checkpoints/
