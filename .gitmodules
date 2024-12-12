@@ -4,3 +4,6 @@
 [submodule "DepthPro"]
 	path = DepthPro
 	url = https://github.com/apple/ml-depth-pro.git
+[submodule "sapiens"]
+	path = sapiens
+	url = https://github.com/facebookresearch/sapiens.git

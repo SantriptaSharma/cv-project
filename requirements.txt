@@ -111,6 +111,7 @@ retrying==1.3.4
 rpds-py==0.22.3
 safetensors==0.4.5
 scipy==1.14.1
+seaborn==0.13.2
 sentry-sdk==2.19.0
 setproctitle==1.3.4
 six==1.16.0
@@ -132,6 +133,8 @@ tqdm==4.67.0
 traitlets==5.14.3
 typing_extensions==4.12.2
 tzdata==2024.1
+ultralytics==8.3.49
+ultralytics-thop==2.0.13
 -e git+https://github.com/lpiccinelli-eth/UniDepth.git@bebc4b2fdda5c223693c390739db76897aee42e5#egg=unidepth&subdirectory=..\..\unidepth
 urllib3==1.26.13
 wandb==0.18.7

@@ -6,5 +6,6 @@ unidepth_out/depths.npz
 depthpro_out/focals.npz
 depthpro_out/depths.npz
 
+pose_out/pose_preds.pkl
 
 checkpoints/
